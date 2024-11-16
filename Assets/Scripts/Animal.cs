@@ -37,7 +37,10 @@ public class Animal : MonoBehaviour
     {
         while (hunger > 0)
         {
-            hunger -= 5f;
+            if (GameManager.instance.gameStarted)
+            {
+                hunger -= 1f;
+            }
             
             hungerBar.fillAmount = hunger/100f;
             yield return new WaitForSeconds(1f);
@@ -48,8 +51,11 @@ public class Animal : MonoBehaviour
     {
         while (thirst > 0)
         {
-            thirst -= 2f;
-            
+            if (GameManager.instance.gameStarted)
+            {
+                thirst -= 0.5f;
+            }
+
             thirstBar.fillAmount = thirst/100f;
             yield return new WaitForSeconds(1f);
         }
@@ -59,8 +65,11 @@ public class Animal : MonoBehaviour
     {
         while (mood > 0)
         {
-            mood -= 1f;
-            
+            if (GameManager.instance.gameStarted)
+            {
+                mood -= 0.2f;
+            }
+
             moodBar.fillAmount = mood/100f;
             yield return new WaitForSeconds(1f);
         }

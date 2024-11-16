@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    private void Quit()
+    public void Quit()
     {
         Application.Quit();
     }
