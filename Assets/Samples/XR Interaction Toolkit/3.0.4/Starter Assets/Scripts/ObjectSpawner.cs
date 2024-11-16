@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit.Utilities;
 
@@ -9,6 +10,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
     /// </summary>
     public class ObjectSpawner : MonoBehaviour
     {
+        public bool canSpawn = true;
+        public bool waypointAvail = false;
+        public bool waypointCD = false;
+        
         [SerializeField]
         [Tooltip("The camera that objects will face when spawned. If not set, defaults to the main camera.")]
         Camera m_CameraToFace;
@@ -29,6 +34,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         [SerializeField]
         [Tooltip("The list of prefabs available to spawn.")]
         List<GameObject> m_ObjectPrefabs = new List<GameObject>();
+
+        public GameObject wayPointPrefab;
 
         /// <summary>
         /// The list of prefabs available to spawn.
@@ -177,6 +184,16 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         }
 
         /// <summary>
+        /// Coroutine to reset waypoint placement cooldown
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator ResetWaypointCD()
+        {
+            yield return new WaitForSeconds(1f);
+            waypointCD = false;
+        }
+
+        /// <summary>
         /// Attempts to spawn an object from <see cref="objectPrefabs"/> at the given position. The object will have a
         /// yaw rotation that faces <see cref="cameraToFace"/>, plus or minus a random angle within <see cref="spawnAngleRange"/>.
         /// </summary>
@@ -203,34 +220,84 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                     return false;
                 }
             }
-
-            var objectIndex = isSpawnOptionRandomized ? Random.Range(0, m_ObjectPrefabs.Count) : m_SpawnOptionIndex;
-            var newObject = Instantiate(m_ObjectPrefabs[objectIndex]);
-            if (m_SpawnAsChildren)
-                newObject.transform.parent = transform;
-
-            newObject.transform.position = spawnPoint;
-            EnsureFacingCamera();
-
-            var facePosition = m_CameraToFace.transform.position;
-            var forward = facePosition - spawnPoint;
-            BurstMathUtility.ProjectOnPlane(forward, spawnNormal, out var projectedForward);
-            newObject.transform.rotation = Quaternion.LookRotation(projectedForward, spawnNormal);
-
-            if (m_ApplyRandomAngleAtSpawn)
+            
+            if (canSpawn)
             {
-                var randomRotation = Random.Range(-m_SpawnAngleRange, m_SpawnAngleRange);
-                newObject.transform.Rotate(Vector3.up, randomRotation);
-            }
+                Debug.Log("Spawning Animal!");
+                canSpawn = false;
+                
+                var objectIndex = isSpawnOptionRandomized ? Random.Range(0, m_ObjectPrefabs.Count) : m_SpawnOptionIndex;
+                
+                var newObject = Instantiate(m_ObjectPrefabs[objectIndex]);
+                if (m_SpawnAsChildren)
+                    newObject.transform.parent = transform;
 
-            if (m_SpawnVisualizationPrefab != null)
+                newObject.transform.position = spawnPoint;
+                EnsureFacingCamera();
+
+                var facePosition = m_CameraToFace.transform.position;
+                var forward = facePosition - spawnPoint;
+                BurstMathUtility.ProjectOnPlane(forward, spawnNormal, out var projectedForward);
+                newObject.transform.rotation = Quaternion.LookRotation(projectedForward, spawnNormal);
+
+                if (m_ApplyRandomAngleAtSpawn)
+                {
+                    var randomRotation = Random.Range(-m_SpawnAngleRange, m_SpawnAngleRange);
+                    newObject.transform.Rotate(Vector3.up, randomRotation);
+                }
+
+                if (m_SpawnVisualizationPrefab != null)
+                {
+                    var visualizationTrans = Instantiate(m_SpawnVisualizationPrefab).transform;
+                    visualizationTrans.position = spawnPoint;
+                    visualizationTrans.rotation = newObject.transform.rotation;
+                }
+
+                objectSpawned?.Invoke(newObject);
+            }
+            else
             {
-                var visualizationTrans = Instantiate(m_SpawnVisualizationPrefab).transform;
-                visualizationTrans.position = spawnPoint;
-                visualizationTrans.rotation = newObject.transform.rotation;
-            }
+                if (waypointCD == false)
+                {
+                    waypointCD = true;
+                    StartCoroutine(ResetWaypointCD());
+                    if (waypointAvail)
+                    {
+                        DestroyImmediate(GameObject.FindGameObjectWithTag("Waypoint"));
+                        waypointAvail = false;
+                    }
+                
+                    Debug.Log("Spawning Waypoint!");
+                    var newObject = Instantiate(wayPointPrefab);
+                    waypointAvail = true;
+                
+                    if (m_SpawnAsChildren)
+                        newObject.transform.parent = transform;
 
-            objectSpawned?.Invoke(newObject);
+                    newObject.transform.position = spawnPoint;
+                    EnsureFacingCamera();
+
+                    var facePosition = m_CameraToFace.transform.position;
+                    var forward = facePosition - spawnPoint;
+                    BurstMathUtility.ProjectOnPlane(forward, spawnNormal, out var projectedForward);
+                    newObject.transform.rotation = Quaternion.LookRotation(projectedForward, spawnNormal);
+
+                    if (m_ApplyRandomAngleAtSpawn)
+                    {
+                        var randomRotation = Random.Range(-m_SpawnAngleRange, m_SpawnAngleRange);
+                        newObject.transform.Rotate(Vector3.up, randomRotation);
+                    }
+
+                    if (m_SpawnVisualizationPrefab != null)
+                    {
+                        var visualizationTrans = Instantiate(m_SpawnVisualizationPrefab).transform;
+                        visualizationTrans.position = spawnPoint;
+                        visualizationTrans.rotation = newObject.transform.rotation;
+                    }
+
+                    objectSpawned?.Invoke(newObject);
+                }
+            }
             return true;
         }
     }

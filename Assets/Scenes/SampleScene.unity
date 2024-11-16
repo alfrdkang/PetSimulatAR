@@ -1148,7 +1148,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 331264285}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 852577033}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
@@ -2513,7 +2513,15 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 436358034}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2512387470528047719, guid: 48cb3fb68c91eb94999fd99957eb0cae,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 852577039}
+    - targetCorrespondingSourceObject: {fileID: 2512387470528047719, guid: 48cb3fb68c91eb94999fd99957eb0cae,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 852577038}
   m_SourcePrefab: {fileID: 100100000, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
 --- !u!114 &331264286 stripped
 MonoBehaviour:
@@ -2742,7 +2750,7 @@ GameObject:
   - component: {fileID: 436358035}
   m_Layer: 0
   m_Name: Object Spawner
-  m_TagString: Untagged
+  m_TagString: ObjectSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2759,12 +2767,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956dd6cf70eaca449a45b6a95b96c8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canSpawn: 1
+  waypointAvail: 0
   m_CameraToFace: {fileID: 0}
   m_ObjectPrefabs:
   - {fileID: 7105132547998492349, guid: 58ced539c013dab46a8a4af281cd1184, type: 3}
   - {fileID: 1526554761915109350, guid: 076879464bd682945aa7cd31ae139a36, type: 3}
   - {fileID: 2966845795971187337, guid: 3e9ebf26f6c110142a94d7ad4f46b9f1, type: 3}
   - {fileID: 392569855949669136, guid: ba87ae7a15f3428429d8b382e7556cb0, type: 3}
+  wayPointPrefab: {fileID: 6050731476282866314, guid: a6dee5604abc01246b37fc1d1489ca58,
+    type: 3}
   m_SpawnVisualizationPrefab: {fileID: 0}
   m_SpawnOptionIndex: 0
   m_OnlySpawnInView: 1
@@ -2868,7 +2880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -14}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &508700758
@@ -2884,14 +2896,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9622642, g: 0.6895672, b: 0.43120328, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1715071649, guid: 29866a708b877a940a3da7a99c174b3a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 805d175152f8a1f49a07243cb72a64b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3076,7 +3088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &595971758
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3224,7 +3236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 8}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &690328646
@@ -3434,7 +3446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 36}
+  m_AnchoredPosition: {x: -7, y: 3}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &718493394
@@ -3457,7 +3469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 796941523, guid: 29866a708b877a940a3da7a99c174b3a, type: 3}
+  m_Sprite: {fileID: -1600459525, guid: 29866a708b877a940a3da7a99c174b3a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4452,7 +4464,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1672257126, guid: 29866a708b877a940a3da7a99c174b3a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b756a03ffc3e82e43a7b74e394120694, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4470,6 +4482,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846715049}
   m_CullTransparentMesh: 1
+--- !u!1 &852577033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2512387470528047719, guid: 48cb3fb68c91eb94999fd99957eb0cae,
+    type: 3}
+  m_PrefabInstance: {fileID: 331264285}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &852577038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852577033}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022f64c47ffe14f048bbe3e55fad4ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PrefabsList: []
+  m_ImageLibrary: {fileID: 0}
+--- !u!114 &852577039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852577033}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedLibrary: {fileID: 0}
+  m_MaxNumberOfMovingImages: 0
+  m_TrackedImagePrefab: {fileID: 0}
 --- !u!1 &852731951
 GameObject:
   m_ObjectHideFlags: 0
@@ -11916,7 +11963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Welcome to \nARPetCafe!"
+  m_text: "Welcome to \nPetSimulatAR"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 521d2f319dddc7b40ba428705f75796a, type: 2}
   m_sharedMaterial: {fileID: -9182249801730862476, guid: 521d2f319dddc7b40ba428705f75796a,
@@ -12006,7 +12053,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ARPetCafe~
+  m_text: PetSimulatAR~
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 521d2f319dddc7b40ba428705f75796a, type: 2}
   m_sharedMaterial: {fileID: -9182249801730862476, guid: 521d2f319dddc7b40ba428705f75796a,
@@ -12034,8 +12081,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
