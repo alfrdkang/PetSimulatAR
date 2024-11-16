@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+    using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -22,7 +22,7 @@ public class ARTemplateMenuManager : MonoBehaviour
     Button m_CreateButton;
 
     /// <summary>
-    /// Button that opens the create menu.
+    /// Button that opens the create menu.  
     /// </summary>
     public Button createButton
     {
