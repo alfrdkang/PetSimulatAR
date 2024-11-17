@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2678116233660660723}
   m_Layer: 0
-  m_Name: dogPos
+  m_Name: animalPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,6 +252,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c432772fd29ea04468bd9825e5e6ebc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  socketConnected: 0
+  itemName: PetFood
+  audioSrc: {fileID: 0}
+  animalEatClip: {fileID: 8300000, guid: 40c93c74f056c074fa3dede75e90f3cd, type: 3}
+  animalDrinkClip: {fileID: 8300000, guid: ff9d69ab01dbd024d87eb4225e832a7f, type: 3}
+  animalPlayClip: {fileID: 8300000, guid: cdefa90da11a20c4ca6bbf92d50aadc1, type: 3}
 --- !u!1 &9160706000779806898
 GameObject:
   m_ObjectHideFlags: 0

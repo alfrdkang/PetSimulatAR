@@ -37,41 +37,47 @@ public class Animal : MonoBehaviour
     {
         while (hunger > 0)
         {
-            if (GameManager.instance.gameStarted)
+            if (GameManager.instance.gameStarted && !GameManager.instance.eatingFood)
             {
-                hunger -= 1f;
+                hunger -= 3f;
             }
             
             hungerBar.fillAmount = hunger/100f;
             yield return new WaitForSeconds(1f);
         }
+
+        GameManager.instance.GameOver();
     }
 
     private IEnumerator DecreaseThirst()
     {
         while (thirst > 0)
         {
-            if (GameManager.instance.gameStarted)
+            if (GameManager.instance.gameStarted && !GameManager.instance.drinkingWater)
             {
-                thirst -= 0.5f;
+                thirst -= 1f;
             }
 
             thirstBar.fillAmount = thirst/100f;
             yield return new WaitForSeconds(1f);
         }
+        
+        GameManager.instance.GameOver();
     }
     
     private IEnumerator DecreaseMood()
     {
         while (mood > 0)
         {
-            if (GameManager.instance.gameStarted)
+            if (GameManager.instance.gameStarted && !GameManager.instance.playing)
             {
-                mood -= 0.2f;
+                mood -= 0.8f;
             }
 
             moodBar.fillAmount = mood/100f;
             yield return new WaitForSeconds(1f);
         }
+        
+        GameManager.instance.GameOver();
     }
 }

@@ -221,6 +221,16 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                 }
             }
             
+            // Check if the spawn point is on a wall and adjust position to the floor
+            if (Vector3.Dot(spawnNormal, Vector3.up) < 0.5f) // Wall detection: normal not aligned with "up"
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(spawnPoint, Vector3.down, out hit, Mathf.Infinity))
+                {
+                    spawnPoint = hit.point; // Move spawn point to the floor
+                }
+            }
+            
             if (canSpawn)
             {
                 Debug.Log("Spawning Animal!");

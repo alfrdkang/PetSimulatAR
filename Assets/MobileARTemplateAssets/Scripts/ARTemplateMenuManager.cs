@@ -31,19 +31,6 @@ public class ARTemplateMenuManager : MonoBehaviour
     }
 
     [SerializeField]
-    [Tooltip("Button that deletes a selected object.")]
-    Button m_DeleteButton;
-
-    /// <summary>
-    /// Button that deletes a selected object.
-    /// </summary>
-    public Button deleteButton
-    {
-        get => m_DeleteButton;
-        set => m_DeleteButton = value;
-    }
-
-    [SerializeField]
     [Tooltip("The menu with all the creatable objects.")]
     GameObject m_ObjectMenu;
 
@@ -227,7 +214,6 @@ public class ARTemplateMenuManager : MonoBehaviour
     {
         m_CreateButton.onClick.AddListener(ShowMenu);
         m_CancelButton.onClick.AddListener(HideMenu);
-        m_DeleteButton.onClick.AddListener(DeleteFocusedObject);
         m_PlaneManager.planesChanged += OnPlaneChanged;
     }
 
@@ -239,7 +225,6 @@ public class ARTemplateMenuManager : MonoBehaviour
         m_ShowObjectMenu = false;
         m_CreateButton.onClick.RemoveListener(ShowMenu);
         m_CancelButton.onClick.RemoveListener(HideMenu);
-        m_DeleteButton.onClick.RemoveListener(DeleteFocusedObject);
         m_PlaneManager.planesChanged -= OnPlaneChanged;
     }
 
@@ -280,22 +265,12 @@ public class ARTemplateMenuManager : MonoBehaviour
                     m_ModalMenu.SetActive(false);
             }
 
-            if (m_ShowObjectMenu)
-            {
-                m_DeleteButton.gameObject.SetActive(false);
-            }
-            else
-            {
-                m_DeleteButton.gameObject.SetActive(m_InteractionGroup?.focusInteractable != null);
-            }
-
             m_IsPointerOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(-1);
         }
         else
         {
             m_IsPointerOverUI = false;
             m_CreateButton.gameObject.SetActive(true);
-            m_DeleteButton.gameObject.SetActive(m_InteractionGroup?.focusInteractable != null);
         }
 
         if (!m_IsPointerOverUI && m_ShowOptionsModal)
@@ -420,15 +395,6 @@ public class ARTemplateMenuManager : MonoBehaviour
         for (int i = 0; i < count; ++i)
         {
             featheredPlaneMeshVisualizerCompanions[i].visualizeSurfaces = setVisible;
-        }
-    }
-
-    void DeleteFocusedObject()
-    {
-        var currentFocusedObject = m_InteractionGroup.focusInteractable;
-        if (currentFocusedObject != null)
-        {
-            Destroy(currentFocusedObject.transform.gameObject);
         }
     }
 

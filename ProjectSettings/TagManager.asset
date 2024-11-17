@@ -8,6 +8,7 @@ TagManager:
   - ObjectSpawner
   - Animal
   - Socket
+  - SFX
   layers:
   - Default
   - TransparentFX

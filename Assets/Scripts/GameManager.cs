@@ -5,8 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    
+    [SerializeField] private GameObject gameOverPanel;
+    
     public bool gameStarted = false;
+    public bool eatingFood = false;
+    public bool drinkingWater = false;
+    public bool playing = false;
     
     private void Awake()
     {
@@ -20,16 +25,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void GameOver()
     {
-        
+        Time.timeScale = 0;
+        gameOverPanel.SetActive(true);
     }
 }

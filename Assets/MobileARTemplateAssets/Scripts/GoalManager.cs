@@ -135,6 +135,10 @@ public class GoalManager : MonoBehaviour
     [Tooltip("The Options Button to enable once the greeting prompt is dismissed.")]
     [SerializeField]
     GameObject m_OptionsButton;
+    
+    [Tooltip("The Pause Button to enable once the greeting prompt is dismissed.")]
+    [SerializeField]
+    GameObject m_PauseButton;
 
     /// <summary>
     /// The Options Button to enable once the greeting prompt is dismissed.
@@ -214,6 +218,19 @@ public class GoalManager : MonoBehaviour
         }
 
         PreprocessGoal();
+    }
+
+    /// <summary>
+    /// Skips all the goals and finishes the onboarding process.
+    /// </summary>
+    public void SkipAllGoals()
+    {
+        Debug.Log("Skipping Onboarding Goals");
+        m_CurrentGoalIndex = m_StepList.Count - 1;
+        while (m_CurrentGoalIndex < m_StepList.Count)
+        {
+            CompleteGoal();
+        }
     }
 
     void PreprocessGoal()
@@ -307,6 +324,7 @@ public class GoalManager : MonoBehaviour
 
         m_GreetingPrompt.SetActive(false);
         m_OptionsButton.SetActive(true);
+        m_PauseButton.SetActive(true);
         m_CreateButton.SetActive(true);
         m_MenuManager.enabled = true;
 
