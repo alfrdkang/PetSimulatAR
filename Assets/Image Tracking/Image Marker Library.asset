@@ -41,9 +41,9 @@ MonoBehaviour:
       m_GuidLow: 5415170370975633212
       m_GuidHigh: 7119606359976442027
     m_SerializedTextureGuid:
-      m_GuidLow: 16961820125304802511
-      m_GuidHigh: 16802329380695188458
-    m_Size: {x: 0.3, y: 0.27857143}
+      m_GuidLow: 11865739567713660907
+      m_GuidHigh: 15874739448404827611
+    m_Size: {x: 0.3, y: 0.26603773}
     m_SpecifySize: 1
     m_Name: waterBowl
-    m_Texture: {fileID: 2800000, guid: 50dd4ccf7d89eb64ea2372978cdd2de9, type: 3}
+    m_Texture: {fileID: 0}
