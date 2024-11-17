@@ -46,17 +46,23 @@ public class PathFinding : MonoBehaviour
 
         if (socketSnap)
         {
-            Destroy(GameObject.FindGameObjectWithTag("Waypoint"));
-            transform.LookAt(GameObject.FindGameObjectWithTag("Socket").transform.position);
+            if (destSet)
+            {
+                Destroy(dest); 
+            }
+
+            if (GameObject.FindGameObjectWithTag("Socket").transform.position != null)
+            {
+                transform.LookAt(GameObject.FindGameObjectWithTag("Socket").transform.position);
+            }
         }
-        
     }
 
     public void Grabbed()
     {
         if (destSet)
         {
-            Destroy(GameObject.FindGameObjectWithTag("Waypoint"));
+            Destroy(dest);
         }
     }
 }

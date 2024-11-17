@@ -209,6 +209,7 @@ public class GoalManager : MonoBehaviour
         {
             m_StepList[m_CurrentGoalIndex - 1].stepObject.SetActive(false);
             m_AllGoalsFinished = true;
+            GameManager.instance.gameStarted = true;
             return;
         }
 

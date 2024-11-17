@@ -2259,6 +2259,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2099970469}
     m_Modifications:
+    - target: {fileID: 2512387469002778329, guid: 48cb3fb68c91eb94999fd99957eb0cae,
+        type: 3}
+      propertyPath: m_FacingDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512387469002778331, guid: 48cb3fb68c91eb94999fd99957eb0cae,
+        type: 3}
+      propertyPath: far clip plane
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512387469002778331, guid: 48cb3fb68c91eb94999fd99957eb0cae,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 2512387470319625105, guid: 48cb3fb68c91eb94999fd99957eb0cae,
         type: 3}
       propertyPath: m_OccludeARHitsWith2DObjects
@@ -2617,10 +2632,10 @@ MonoBehaviour:
   waypointCD: 0
   m_CameraToFace: {fileID: 0}
   m_ObjectPrefabs:
-  - {fileID: 7105132547998492349, guid: 58ced539c013dab46a8a4af281cd1184, type: 3}
-  - {fileID: 1526554761915109350, guid: 076879464bd682945aa7cd31ae139a36, type: 3}
-  - {fileID: 2966845795971187337, guid: 3e9ebf26f6c110142a94d7ad4f46b9f1, type: 3}
-  - {fileID: 392569855949669136, guid: ba87ae7a15f3428429d8b382e7556cb0, type: 3}
+  - {fileID: 3383364416699208496, guid: a1eac984a1b95be4eb0dcc24af2bdd1f, type: 3}
+  - {fileID: 2315492043303515510, guid: f3f9f126ca460be46a3268072e196a4a, type: 3}
+  - {fileID: 1747893828154961286, guid: 3776afa86114b754db98bbc6af91ed56, type: 3}
+  - {fileID: 1675887733591865494, guid: 4377786e1ccb9f64fb67c4a83a232aba, type: 3}
   wayPointPrefab: {fileID: 6050731476282866314, guid: a6dee5604abc01246b37fc1d1489ca58,
     type: 3}
   m_SpawnVisualizationPrefab: {fileID: 0}
