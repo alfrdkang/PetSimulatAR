@@ -11,6 +11,7 @@ public class PathFinding : MonoBehaviour
     public float moveSpd;
 
     public bool destSet = false;
+    public bool socketSnap = false;
     
     [SerializeField] private GameObject playerCam;
 
@@ -33,7 +34,7 @@ public class PathFinding : MonoBehaviour
             }
         }
 
-        if (spawner.waypointAvail && destSet && dest != null)
+        if (spawner.waypointAvail && destSet && dest != null && !socketSnap)
         {
             transform.position = Vector3.Lerp(transform.position, dest.transform.position, moveSpd * Time.deltaTime);
             transform.LookAt(dest.transform.position);
@@ -42,6 +43,20 @@ public class PathFinding : MonoBehaviour
         {
             destSet = false;
         }
+
+        if (socketSnap)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Waypoint"));
+            transform.LookAt(GameObject.FindGameObjectWithTag("Socket").transform.position);
+        }
         
+    }
+
+    public void Grabbed()
+    {
+        if (destSet)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Waypoint"));
+        }
     }
 }
