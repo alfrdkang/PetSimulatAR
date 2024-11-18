@@ -21,12 +21,12 @@ MonoBehaviour:
       m_GuidLow: 5750375032056784229
       m_GuidHigh: 10536138905678919573
     m_SerializedTextureGuid:
-      m_GuidLow: 3761674611054770531
-      m_GuidHigh: 6292994762661361642
-    m_Size: {x: 0.3, y: 0.27306503}
+      m_GuidLow: 4054390569984212638
+      m_GuidHigh: 16956297115617336443
+    m_Size: {x: 0.3, y: 0.29966927}
     m_SpecifySize: 1
     m_Name: tennisBall
-    m_Texture: {fileID: 2800000, guid: e886796327203434eaf7d21965355557, type: 3}
+    m_Texture: {fileID: 2800000, guid: 089a3e9e16be38447b1c5a6a63de50eb, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5173026871926814685
       m_GuidHigh: 737747549162498445
@@ -46,4 +46,4 @@ MonoBehaviour:
     m_Size: {x: 0.3, y: 0.26603773}
     m_SpecifySize: 1
     m_Name: waterBowl
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: fadeafeb9344a4abdbdd0c9c6b674edc, type: 3}

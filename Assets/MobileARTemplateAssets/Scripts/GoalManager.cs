@@ -139,6 +139,10 @@ public class GoalManager : MonoBehaviour
     [Tooltip("The Pause Button to enable once the greeting prompt is dismissed.")]
     [SerializeField]
     GameObject m_PauseButton;
+    
+    [Tooltip("The Time Text to enable once the greeting prompt is dismissed.")]
+    [SerializeField]
+    GameObject m_TimeText;
 
     /// <summary>
     /// The Options Button to enable once the greeting prompt is dismissed.
@@ -213,7 +217,8 @@ public class GoalManager : MonoBehaviour
         {
             m_StepList[m_CurrentGoalIndex - 1].stepObject.SetActive(false);
             m_AllGoalsFinished = true;
-            GameManager.instance.gameStarted = true;
+            m_CreateButton.SetActive(false);
+            GameManager.instance.StartGame();
             return;
         }
 
@@ -325,6 +330,7 @@ public class GoalManager : MonoBehaviour
         m_GreetingPrompt.SetActive(false);
         m_OptionsButton.SetActive(true);
         m_PauseButton.SetActive(true);
+        m_TimeText.SetActive(true);
         m_CreateButton.SetActive(true);
         m_MenuManager.enabled = true;
 

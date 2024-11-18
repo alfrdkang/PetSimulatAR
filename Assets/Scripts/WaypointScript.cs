@@ -1,3 +1,11 @@
+/*
+ * 
+ * Author: Alfred Kang Jing Rui
+ * Date: 17/11/2024
+ * Purpose: Removes waypoint when animal reaches it
+ * 
+ */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
