@@ -2,8 +2,6 @@
 
 ## ITD-ASG1
  
-*Alfred Kang Jing Rui / S10256077G (IM01)*
-
 > **Date Created: 17/11/24
 Date Last Modified: 18/11/24**
 
@@ -64,14 +62,6 @@ PetSimulatAR offers a fun and interactive way for users to explore the responsib
     
     Keep your pet happy for one full minute to win. Enjoy!
     
-
-# Hardware
-
-**Platform: Apple IOS**
-
-**Model: iPhone 6s and 6s Plus and newer**
-
-**Storage: 100 MB available space**
 
 # Limitations, Bugs, and Future Implementations
 
